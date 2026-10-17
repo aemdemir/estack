@@ -43,8 +43,8 @@ first, then fix and verify.
 ```
 
 ```
-/emre-mode i'm going to bed. keep going until every fixture passes. do not stop. keep a decision
-log i can audit in the morning.
+/emre-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by
+morning.
 ```
 
 <details>
@@ -145,8 +145,8 @@ perf:              /emre-mode a big list takes a second or two to load even thou
 feature:           /emre-mode build a small feature behind a feature flag. verify it really works.
 prototype:         /emre-mode build two prototypes of the markdown renderer so we can compare.
                    spawn an agent for each.
-overnight run:     /emre-mode i'm going to bed. keep going until every fixture passes. do not
-                   stop. keep a decision log i can audit in the morning.
+overnight run:     /emre-mode i'm going to bed. land the stack even if ci flakes. i want
+                   everything merged by morning.
 babysit:           /emre-mode check on pr 123. anything outstanding?
 figure it out:     /emre-mode i'm stepping away. migrate every caller from the synchronous store
                    to the new async one, keeping behavior identical. i want to trust it was done
