@@ -35,7 +35,7 @@ pick `/emre-mode` from the `/` menu before you type your task, so cursor attache
 
 ### just use [`/emre-mode`](./skills/emre-mode/SKILL.md)
 
-this skill is the main shortcut. use it whenever you need the agent to do rigorous engineering work. it comes with eleven playbooks:
+this skill is the main shortcut. use it whenever you need the agent to do rigorous engineering work. it comes with twelve playbooks:
 
 ```
 /emre-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro
@@ -48,7 +48,7 @@ log i can audit in the morning.
 ```
 
 <details>
-<summary>the eleven playbooks</summary>
+<summary>the twelve playbooks</summary>
 
 | playbook | for |
 |---|---|
@@ -61,6 +61,7 @@ log i can audit in the morning.
 | [authoring a skill](./skills/emre-mode/playbooks/authoring-a-skill.md) | writing or editing a SKILL.md. |
 | [eval](./skills/emre-mode/playbooks/eval.md) | test how a skill or prompt change affects agent behavior, blinded. |
 | [babysit](./skills/emre-mode/playbooks/babysit.md) | drive a pr or a stack to merge-ready: conflicts, review threads, ci. |
+| [shipping](./skills/emre-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through github by default or origin when available. |
 | [autonomous run](./skills/emre-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |
 | [opening a pr](./skills/emre-mode/playbooks/opening-a-pr.md) | open a ready pr from small ordered commits with a conventional commits title and a briefing-style body. invoked at the end of every other playbook. |
 

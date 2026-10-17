@@ -1,6 +1,6 @@
 # Route work through `/emre-mode`
 
-`/emre-mode` is the front door. You give it a goal, it matches one of eleven playbooks, copies that playbook's steps into the todo list, and calls the other skills as the steps need them. In this page you learn what a good prompt looks like, and how little of one you actually need.
+`/emre-mode` is the front door. You give it a goal, it matches one of twelve playbooks, copies that playbook's steps into the todo list, and calls the other skills as the steps need them. In this page you learn what a good prompt looks like, and how little of one you actually need.
 
 ![A dispatcher pulls a switch lever to route robots on rail handcars toward lit gates, under a /poteto-mode departure board listing BUG FIX, FEATURE, and INVESTIGATION.](./images/router.jpg)
 
@@ -25,7 +25,7 @@ flowchart TD
     J --> K
 ```
 
-The diagram shows the common routes. There are also playbooks for prototypes, authoring and evaluating skills, autonomous runs, and babysitting a PR or stack to merge-ready. The [playbook directory](../../skills/emre-mode/playbooks/) has the full set.
+The diagram shows the common routes. There are also playbooks for prototypes, authoring and evaluating skills, autonomous runs, babysitting a PR or stack to merge-ready, and shipping a verified stack. The [playbook directory](../../skills/emre-mode/playbooks/) has the full set.
 
 ## Say the goal, not the ceremony
 
