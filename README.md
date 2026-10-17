@@ -175,11 +175,11 @@ automate-me:       /automate-me
 
 [`/emre-mode`](./skills/emre-mode/SKILL.md) runs in the chat that receives it. that chat owns the playbook, the todo list, and every subagent spawn.
 
-estack also ships [`subagent_type: "emre-agent"`](./agents/emre-agent.md) as the wrapper for delegates spawned during a run. it reads `emre-mode` in full, including its inline principles index, before doing any work. substituting `generalPurpose` skips that read and drifts. do not spawn `emre-agent` to run the playbook itself.
+estack also ships [`subagent_type: "estack:emre-agent"`](./agents/emre-agent.md) as the wrapper for delegates spawned during a run. it reads `emre-mode` in full, including its inline principles index, before doing any work. substituting `general-purpose` skips that read and drifts. do not spawn `emre-agent` to run the playbook itself.
 
-[`/emre-mode`](./skills/emre-mode/SKILL.md) and [`subagent_type: "emre-agent"`](./agents/emre-agent.md) route through the same wrapper.
+[`/emre-mode`](./skills/emre-mode/SKILL.md) and [`subagent_type: "estack:emre-agent"`](./agents/emre-agent.md) route through the same wrapper.
 
-estack also ships [Comment Sicko](./agents/comment-sicko.md), a read-only comment reviewer available as `subagent_type: "comment-sicko"`. usually invoke it through [`/no-comments`](./skills/no-comments/SKILL.md), not directly.
+estack also ships [Comment Sicko](./agents/comment-sicko.md), a read-only comment reviewer available as `subagent_type: "estack:comment-sicko"`. usually invoke it through [`/no-comments`](./skills/no-comments/SKILL.md), not directly.
 
 ## principles
 
