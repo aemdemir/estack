@@ -43,8 +43,8 @@ first, then fix and verify.
 ```
 
 ```
-/emre-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by
-morning.
+/emre-mode i'm going to bed. land the stack even if ci flakes. i want everything ready for me
+to merge by morning.
 ```
 
 <details>
@@ -61,7 +61,7 @@ morning.
 | [authoring a skill](./skills/emre-mode/playbooks/authoring-a-skill.md) | writing or editing a SKILL.md. |
 | [eval](./skills/emre-mode/playbooks/eval.md) | test how a skill or prompt change affects agent behavior, blinded. |
 | [babysit](./skills/emre-mode/playbooks/babysit.md) | drive a pr or a stack to merge-ready: conflicts, review threads, ci. |
-| [shipping](./skills/emre-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through github by default or origin when available. |
+| [shipping](./skills/emre-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through gitlab, pausing for your confirmation before each merge. |
 | [autonomous run](./skills/emre-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |
 | [opening a pr](./skills/emre-mode/playbooks/opening-a-pr.md) | open a ready pr from small ordered commits with a conventional commits title and a briefing-style body. invoked at the end of every other playbook. |
 
@@ -147,7 +147,7 @@ feature:           /emre-mode build a small feature behind a feature flag. verif
 prototype:         /emre-mode build two prototypes of the markdown renderer so we can compare.
                    spawn an agent for each.
 overnight run:     /emre-mode i'm going to bed. land the stack even if ci flakes. i want
-                   everything merged by morning.
+                   everything ready for me to merge by morning.
 babysit:           /emre-mode check on pr 123. anything outstanding?
 figure it out:     /emre-mode i'm stepping away. migrate every caller from the synchronous store
                    to the new async one, keeping behavior identical. i want to trust it was done
