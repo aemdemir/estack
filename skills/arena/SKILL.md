@@ -25,7 +25,7 @@ If a candidate produces no output, proceed with N-1 and note the dropout.
 
 ## Phase C: Cross-judge
 
-After all Phase B candidates complete, choose one model from the `arena cross-judge pool` line in `~/.claude/estack-models.md`. If the file or that line is missing, choose from `opus` at `xhigh` and `sonnet` at `xhigh`. Prefer a different model from the session's. Spawn one read-only judge subagent (`subagent_type: "Explore"`) on that model. It sees the rubric and the candidates by path label, scores each criterion, and recommends a base with rationale. It runs in parallel with your reading in Phase D. Don't spawn it while candidates are still writing.
+After all Phase B candidates complete, choose one model from the `arena cross-judge pool` line in `~/.claude/estack-models.md`. If the file or that line is missing, choose from `opus` at `xhigh` and `sonnet` at `xhigh`. Prefer a different model from the session's. Spawn one read-only judge subagent (`subagent_type: "general-purpose"`, with a brief that says not to edit files) on that model. It sees the rubric and the candidates by path label, scores each criterion, and recommends a base with rationale. It runs in parallel with your reading in Phase D. Don't spawn it while candidates are still writing.
 
 ## Phase D: Pick a base
 

@@ -31,7 +31,7 @@ Launch all reviewers in a single message with the Agent tool, one per entry on t
 | Reviewer A | `opus` at `xhigh` |
 | Reviewer B | `sonnet` at `xhigh` |
 
-Each reviewer gets `subagent_type: "Explore"` (read-only, but it keeps `Bash`, so the brief says not to edit files and you check `git status` after), and `model` and `effort` set to its configured entry, or its table default when there is no configured line. Omit `model` for an `inherit` entry, so that reviewer runs on the session model.
+Each reviewer gets `subagent_type: "general-purpose"` (the brief says not to edit files, and you check `git status` after), and `model` and `effort` set to its configured entry, or its table default when there is no configured line. Omit `model` for an `inherit` entry, so that reviewer runs on the session model.
 
 If the Agent tool rejects a configured entry, run that reviewer on its table default and say so. If it rejects a table default, run that reviewer with `model` unset, say so, and open a separate PR to update the default table. Do not block the review on the model issue. Never treat an alias entry as a rejected model or apply either fallback to it.
 
