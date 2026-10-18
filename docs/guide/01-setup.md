@@ -14,13 +14,13 @@ Run:
 /setup-estack
 ```
 
-[`/setup-estack`](../../skills/setup-estack/SKILL.md) detects the models you have access to, asks for a reasoning budget, shows you each role (code delegates, judgment, the review panels), and asks what you want. Answer the questions. It writes `~/.cursor/rules/estack-models.mdc`, a small rule every estack skill reads.
+[`/setup-estack`](../../skills/setup-estack/SKILL.md) asks which models you have access to and for a reasoning budget, shows you each role (code delegates, judgment, the review panels), and asks what you want. Answer the questions. It writes `~/.claude/estack-models.md`, a small file every estack skill reads when it spawns a subagent.
 
-The defaults run at `xhigh` reasoning, the same as the `large` budget. `unlimited` lifts each model to its highest tier, up to `max`. Opus goes to `max`. Grok tops out at `xhigh`, so it stays there. `medium` and `small` lower the reasoning and spend fewer tokens.
+The defaults run at `xhigh` effort, the same as the `large` budget. `unlimited` lifts every role to `max`. `medium` and `small` lower the effort and spend fewer tokens.
 
-You only override what you care about. A role with no line in the rule keeps the skill's default. To restore a default, delete that role's line. A rerun of `/setup-estack` keeps any role whose model differs from the default. When a default changes, a rule written before the change still pins the old default, so delete those role lines, or delete the file, then run `/setup-estack` again.
+You only override what you care about. A role with no line in the file keeps the skill's default. To restore a default, delete that role's line. A rerun of `/setup-estack` keeps any role whose model differs from the default. When a default changes, a file written before the change still pins the old default, so delete those role lines, or delete the file, then run `/setup-estack` again.
 
-You might be wondering what happens if you use Auto. Set a role to `inherit-parent` or `auto` and estack omits the subagent `model` field, so the subagent inherits your parent chat model. Both values mean the same thing, and neither is a model slug. For a panel role the value is a list, and one subagent runs per entry, so the list length sets the panel size. Setup also configures `swarm workers`, the default model for every `/swarm` worker unless a race names a model for each arm.
+To run a role on the chat's own model, set it to `inherit` and estack omits the subagent `model` field. For a panel role the value is a list, and one subagent runs per entry, so the list length sets the panel size. Setup also configures `swarm workers`, the default model for every `/swarm` worker unless a race names a model for each arm.
 
 ## Accept the verification offer, or don't
 
@@ -30,14 +30,14 @@ Say yes and it writes `.claude/skills/verify-<app>/`, a project-local skill that
 
 If you're new to estack, say yes. An agent that can check its own work keeps going until the check passes. An agent that can't hands every result back to you to check by hand. Of everything in this guide, the verification skill pays off the most.
 
-After setup, start a new chat. The model rule applies to new sessions.
+After setup, start a new chat. The model file applies to new sessions.
 
 ## Keep the cost in check
 
 estack spends extra tokens on subagents and review panels. That's the price of the rigor. To spend fewer:
 
-- Rerun `/setup-estack` and pick a smaller reasoning budget or cheaper models. A strong model in the main chat with cheaper, faster models in the code roles is a good split.
-- Set a role to `auto` or `inherit-parent` so it runs on the chat's own model.
+- Rerun `/setup-estack` and pick a smaller reasoning budget or cheaper models. A strong model in the main chat with cheaper models in the code roles is a good split.
+- Set a role to `inherit` so it runs on the chat's own model.
 - Shorten a panel list. Each entry runs one subagent.
 - Save `/emre-mode` for work that needs rigor. A small, obvious edit doesn't.
 

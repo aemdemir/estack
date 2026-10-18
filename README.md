@@ -25,7 +25,7 @@ two steps:
 
 new here? the [estack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs.
 
-that's it. the other skills are situational; the mode skill uses them for you as needed. out of the box the mode splits work by model strength: code delegates (feature, refactoring, bug fix, perf) go to grok, while the hardest changes, prose, and judgment go to opus 5.5. the default panel is opus 5.5 / grok. [`/setup-estack`](./skills/setup-estack/SKILL.md) changes any of it.
+that's it. the other skills are situational; the mode skill uses them for you as needed. out of the box the mode splits work by model strength: code delegates (feature, refactoring, bug fix, perf) go to sonnet, while the hardest changes, prose, and judgment go to opus. the default panel is opus / sonnet. [`/setup-estack`](./skills/setup-estack/SKILL.md) changes any of it.
 
 ## usage
 
@@ -237,9 +237,9 @@ estack ships no planning playbook. cursor already has a great plan mode which wo
 
 type [`/automate-me`](./skills/automate-me/SKILL.md). it mines your recent transcripts, drafts a `<your-name>-mode` skill from how you've actually worked, and routes through estack underneath. you keep estack as the base and end up with your own routing skill alongside `emre-mode`.
 
-models are configurable too. type [`/setup-estack`](./skills/setup-estack/SKILL.md). it detects the models you have access to and writes a small always-applied rule mapping each role (code, judgment, the review panels) to a model. every skill reads it and falls back to sensible defaults when the rule is absent, so you override only what you want.
+models are configurable too. type [`/setup-estack`](./skills/setup-estack/SKILL.md). it asks which models you have access to and writes a small per-user file mapping each role (code, judgment, the review panels) to a model and an effort. every skill reads it and falls back to sensible defaults when the file is absent, so you override only what you want.
 
-when a default changes, a rule written before the change still pins the old default. delete those role lines, or delete the file, then run `/setup-estack` again. a rerun keeps any role whose model differs from the default.
+when a default changes, a file written before the change still pins the old default. delete those role lines, or delete the file, then run `/setup-estack` again. a rerun keeps any role whose model differs from the default.
 
 ## automations
 
