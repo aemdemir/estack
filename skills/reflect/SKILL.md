@@ -12,7 +12,7 @@ Invoke when the user says "reflect" or "/estack:reflect". Skip when the conversa
 
 ## 1. Locate the active transcript
 
-Before fanning out, find this conversation's transcript under `~/.claude/projects/<slug>/`, where `<slug>` is the workspace path with each `/` and `.` changed to `-` (so `/Users/you/proj` is `-Users-you-proj`). The newest `.jsonl` directly in that folder is the current session, and its `<session>/subagents/` folder holds subagent transcripts. Do not glob across `~/.claude/projects/*/`. That crosses workspace boundaries and reads private chats from unrelated projects.
+Before fanning out, find this conversation's transcript under `~/.claude/projects/<slug>/`, where `<slug>` is the workspace path with every character that is not a letter or digit changed to `-` (so `/Users/you/proj` is `-Users-you-proj`). The newest `.jsonl` directly in that folder is the current session, and its `<session>/subagents/` folder holds subagent transcripts. Do not glob across `~/.claude/projects/*/`. That crosses workspace boundaries and reads private chats from unrelated projects.
 
 ```bash
 ls -t ~/.claude/projects/<slug>/*.jsonl ~/.claude/projects/<slug>/*/subagents/*.jsonl 2>/dev/null | head -10
