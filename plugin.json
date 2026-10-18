@@ -6,6 +6,8 @@
   "author": {
     "name": "Emre Demir"
   },
+  "homepage": "https://github.com/aemdemir/estack",
+  "repository": "https://github.com/aemdemir/estack",
   "license": "MIT",
   "keywords": [
     "estack",

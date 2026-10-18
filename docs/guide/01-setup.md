@@ -7,11 +7,11 @@ In this page you install the plugin, pick which models estack uses, and run your
 estack is a Claude Code plugin. Add this repository as a marketplace, then install from it:
 
 ```text
-/plugin marketplace add <path to this checkout>
+/plugin marketplace add aemdemir/estack
 /plugin install estack@estack
 ```
 
-Once the repository is pushed, `/plugin install estack --marketplace <owner>/<repo>` does both in one step on Claude Code 2.1.275 or later.
+Once the repository is pushed, `/plugin install estack --marketplace aemdemir/estack` does both in one step on Claude Code 2.1.275 or later.
 
 ## Pick your models
 

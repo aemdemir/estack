@@ -17,14 +17,14 @@ fork it. improve it. make it yours.
 estack is a claude code plugin. add this repository as a marketplace, then install from it:
 
 ```bash
-/plugin marketplace add <path to this checkout>
+/plugin marketplace add aemdemir/estack
 /plugin install estack@estack
 ```
 
 once the repository is pushed, one step does both on claude code 2.1.275 or later:
 
 ```bash
-/plugin install estack --marketplace <owner>/<repo>
+/plugin install estack --marketplace aemdemir/estack
 ```
 
 ## get started
