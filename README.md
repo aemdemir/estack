@@ -4,11 +4,11 @@ estack is my fork of [pstack](https://github.com/cursor/plugins/tree/main/pstack
 
 there's a growing sense that ai writes too much slop code. i agree. i don't want to ship like a team of twenty slop artists. throughput without quality is not a goal i aspire to. if you want to go fast, go deep first.
 
-**estack keeps pstack's answer.** this turns cursor into a real engineering team. the goal is not to maximize loc, in fact it's the opposite. estack helps you write less, but higher quality code.
+**estack keeps pstack's answer.** this turns claude code into a real engineering team. the goal is not to maximize loc, in fact it's the opposite. estack helps you write less, but higher quality code.
 
 **estack gives you fearless parallelism.** when you can go deep on one agent and trust it to write good, verifiable code, you can truly parallelize with confidence. start multiple agents up with `emre-mode` and trust that they'll apply rigorous engineering principles to their work.
 
-**cursor gives you the best of all worlds.** every frontier model has its strengths and weaknesses. use any model with estack. in fact, many of the skills use multi-model workflows to take advantage of each model's unique strengths.
+**claude code picks the model per job.** every model has its strengths and weaknesses. estack names a model and an effort for each role, and many of the skills use multi-model panels so one model checks another.
 
 fork it. improve it. make it yours.
 
@@ -31,7 +31,7 @@ that's it. the other skills are situational; the mode skill uses them for you as
 
 use [`/emre-mode`](./skills/emre-mode/SKILL.md) at the start of a task. it reads your request, picks from a set of playbooks, and runs the other skills as the steps need them.
 
-pick `/emre-mode` from the `/` menu before you type your task, so cursor attaches the skill to the message.
+type `/emre-mode` before your task, so claude code attaches the skill to the message.
 
 ### just use [`/emre-mode`](./skills/emre-mode/SKILL.md)
 
@@ -77,9 +77,9 @@ when invoked it:
 
 the full rules and playbooks live in [`skills/emre-mode/SKILL.md`](./skills/emre-mode/SKILL.md).
 
-to keep [`/emre-mode`](./skills/emre-mode/SKILL.md) on across turns, pick it from the `/` menu and press option+enter (mac) or alt+enter (windows) instead of enter. that makes it a [custom mode](https://cursor.com/docs/skills), which cursor offers in the agents window and the cli. it stays in context every turn, applies itself when a playbook matches or the task needs rigor, and stays out of the way otherwise. plain enter attaches it to one message only. say so to opt out, or exit the mode to turn it off.
+to keep [`/emre-mode`](./skills/emre-mode/SKILL.md) on across turns, add one line to your `CLAUDE.md` that says to read and follow emre-mode for any non-trivial task. it then applies itself when a playbook matches or the task needs rigor, and stays out of the way otherwise. without that line, type it at the start of each task. say so to opt out for a turn.
 
-[`/emre-mode`](./skills/emre-mode/SKILL.md) works extremely well with cursor's `/loop` command. you can make cursor work for many hours without sacrificing rigor.
+[`/emre-mode`](./skills/emre-mode/SKILL.md) works extremely well with claude code's `/loop` command. you can make claude code work for many hours without sacrificing rigor.
 
 ## skills
 
@@ -122,6 +122,7 @@ to keep [`/emre-mode`](./skills/emre-mode/SKILL.md) on across turns, pick it fro
 | [`/show-me-your-work`](./skills/show-me-your-work/SKILL.md) | you want a reviewable decision trail. logs decisions to a tsv you can commit. |
 | [`/create-verification-skill`](./skills/create-verification-skill/SKILL.md) | your project has no scripted way to prove app behavior. generates a project-local verify skill with a feature map, for any language or platform. |
 | [`/maintain-verification-skill`](./skills/maintain-verification-skill/SKILL.md) | your verify skill's feature map has drifted from the app. source wave + one live pass, at most one PR of proven corrections. |
+| [`/deslop`](./skills/deslop/SKILL.md) | you're cleaning up code. removes the AI slop a branch picks up: unnecessary comments, abnormal defensive checks, type-dodging casts, deep nesting. keeps behavior unchanged. |
 | [`/unslop`](./skills/unslop/SKILL.md) | you're cleaning up writing. removes AI tells. |
 | [`/technical-writing`](./skills/technical-writing/SKILL.md) | layered doc standard (Diátaxis + Google developer style + STE + Global English) for docs, RFCs, readmes, PR descriptions, commit messages. |
 
@@ -221,15 +222,13 @@ twenty-four short skills, one principle each. `emre-mode` indexes them inline an
 
 a few things `emre-mode` references but doesn't bundle:
 
-- `/deslop` and the `deslop` skill ship in the `cursor-team-kit` plugin.
-- `control-cli` (for CLIs and TUIs) and `control-ui` (for browser, Electron, web) ship in `cursor-team-kit` too.
-- `/create-skill` is a cursor built-in. cursor also ships a built-in `/babysit`; inside `emre-mode`, the [babysit playbook](./skills/emre-mode/playbooks/babysit.md) supersedes it for pr-status requests.
-
-install `cursor-team-kit` alongside estack if you want the full set.
+- `skill-creator`, which authors SKILL.md files, ships with claude code's bundled anthropic skills.
+- `/loop` is a claude code built-in.
+- a project's `verify-<app>` skill is the control surface for its app. [`/create-verification-skill`](./skills/create-verification-skill/SKILL.md) writes it.
 
 ## why are there no planning skills?
 
-estack ships no planning playbook. cursor already has a great plan mode which works great with estack. the best spec is code.
+estack ships no planning playbook. claude code already has a great plan mode which works great with estack. the best spec is code.
 
 ## make it yours
 
@@ -241,12 +240,6 @@ models are configurable too. type [`/setup-estack`](./skills/setup-estack/SKILL.
 
 when a default changes, a file written before the change still pins the old default. delete those role lines, or delete the file, then run `/setup-estack` again. a rerun keeps any role whose model differs from the default.
 
-## automations
-
-estack also ships a dormant [benny automation pack](./automations/benny/). benny triages slack issue reports, then reproduces and fixes confirmed bugs with real ui evidence. its files are not registered as slash skills.
-
-to set it up, point cursor at [`FOR_AGENTS.md`](./automations/benny/FOR_AGENTS.md). setup copies the pack into the target repository at `.cursor/automations/benny/`, enables estack there for shared skills, and keeps user configuration outside the copied pack.
-
 ## license
 
-MIT. pstack is copyright Lauren Tan, and the [LICENSE](./LICENSE) keeps that notice.
+MIT. pstack is copyright Lauren Tan, and the [LICENSE](./LICENSE) keeps that notice. the [`deslop`](./skills/deslop/SKILL.md) skill is ported from cursor's `cursor-team-kit` plugin, also MIT, copyright Cursor, and the LICENSE carries that notice too.

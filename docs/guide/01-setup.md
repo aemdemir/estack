@@ -51,6 +51,6 @@ Pick something real but small, and describe it the way you'd describe it to a co
 
 Watch the todo list. Its first items are the matched playbook's steps copied in, the Feature playbook for this prompt. If `/emre-mode` skips a step, the step stays in the list with `skip: <reason>`, so you can see what it chose not to do.
 
-From here you can type normal follow-ups. To keep `/emre-mode` on for the whole chat, pick it from the `/` menu with Option+Enter (Mac) or Alt+Enter (Windows) instead of Enter. That makes it a [Custom Mode](https://cursor.com/docs/skills), which stays in context on every turn until you exit it. Custom Modes are available in the Agents Window and the CLI. Plain Enter attaches the skill to one message, and it fades as the chat moves on.
+From here you can type normal follow-ups. `/emre-mode` stays in the chat's context once it is loaded, though a long chat can let it fade, so start each new task with it. To keep it on in every chat, add one line to your `CLAUDE.md` that says to read and follow emre-mode for any non-trivial task.
 
 Next: [Route work through `/emre-mode`](./02-emre-mode.md).

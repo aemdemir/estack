@@ -32,7 +32,7 @@ Before spawning investigators, build the seed context inline: file paths and lin
 
 ### Discovery
 
-Before spawning investigators, list the available MCPs from the Cursor environment. Use the available-tools map when present. Otherwise inspect the `mcps/` directory Cursor exposes for enabled MCP servers.
+Before spawning investigators, list the available MCP servers from the session's tool list, where MCP tools are named `mcp__<server>__<tool>`. When the session defers tools, search for them before you decide a category has no MCP.
 
 Map each available MCP to one evidence category:
 

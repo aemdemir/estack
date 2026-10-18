@@ -44,7 +44,7 @@ In context, that's enough. [`/tdd`](../../skills/tdd/SKILL.md) writes the smalle
 
 ## Clean before you commit
 
-The [Opening a PR playbook](../../skills/emre-mode/playbooks/opening-a-pr.md) runs `/deslop` on the diff before each commit and applies [`/unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies. `/deslop` ships in the `cursor-team-kit` plugin, not in estack. If you don't have it, ask for the same outcome in plain words: remove narrating comments, unsupported guards, dead compatibility paths, and unrelated edits.
+The [Opening a PR playbook](../../skills/emre-mode/playbooks/opening-a-pr.md) runs [`/deslop`](../../skills/deslop/SKILL.md) on the diff before each commit and applies [`/unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies. `/deslop` removes the code slop a branch picks up: unnecessary comments, defensive checks that are abnormal for trusted paths, casts that only dodge the type checker, and nesting an early return would flatten. It keeps behavior unchanged.
 
 For prose, `/unslop` takes a target and any extra rules you have:
 

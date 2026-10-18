@@ -82,7 +82,7 @@ continue
 keep going until done
 ```
 
-Short works because the playbook holds the structure, and a Custom Mode keeps `/emre-mode` in context on every turn. [Set up estack](./01-setup.md#run-your-first-task) shows how to start one. Your words carry the intent, and the skill carries the rigor.
+Short works because the playbook holds the structure, and `/emre-mode` stays in the chat's context once loaded. [Set up estack](./01-setup.md#run-your-first-task) shows how to keep it on in every chat. Your words carry the intent, and the skill carries the rigor.
 
 ## Switch tasks with "new task"
 
@@ -94,11 +94,11 @@ A long chat accumulates context from the last task. When you change subjects, sa
 
 "new task" tells `/emre-mode` to re-match rather than continue the prior playbook. "don't change any code yet" pins this one to Investigation. Without those two phrases, a mode mid-Feature tends to treat your question as the next feature step.
 
-## Give parallel work its own machine
+## Give parallel work its own worktree
 
-If you run several agents against one repository on one computer, they will fight over the working tree, the ports, and the build output. The cleanest isolation is a [cloud subagent](https://cursor.com/docs/subagents#cloud-subagents). Each one gets its own VM and branch, so it can install dependencies, run your app, and record video of the result without touching your machine. Type `/in-cloud` before the task, or ask the parent chat to hand work to cloud subagents.
+If you run several agents against one repository on one computer, they will fight over the working tree, the ports, and the build output. The cleanest isolation estack has is a worktree per subagent (`isolation: "worktree"`). Each one gets its own checkout and branch, so it can edit, build, and run without touching the files you have open. Worktrees still share the machine, so two workers that each start a dev server need their own ports. Ask the parent chat to give each worker its own worktree.
 
-When the work has to stay local, ask for a worktree up front:
+When a specific base matters, ask for the worktree up front:
 
 ```text
 /emre-mode new task. branch off <base> in a fresh worktree, then port the parser change there.
