@@ -1,18 +1,18 @@
 # The estack guide
 
-estack works best when you stop micromanaging the agent. You describe what you want and how you'll know it's done. `/emre-mode` picks the playbook, runs the other skills as the steps need them, and shows you the evidence. This guide teaches that habit with realistic prompts.
+estack works best when you stop micromanaging the agent. You describe what you want and how you'll know it's done. `/estack:emre-mode` picks the playbook, runs the other skills as the steps need them, and shows you the evidence. This guide teaches that habit with realistic prompts.
 
 Here's what you'll learn:
 
 1. [Set up estack](./01-setup.md). Install the plugin and pick your models.
-2. [Route work through `/emre-mode`](./02-emre-mode.md). Give it a goal and watch it pick a playbook.
-3. [Understand the code](./03-understand.md). A read-only investigation, then `/how`, `/why`, `/teach`, and `/recall` before you edit anything.
-4. [Design the change](./04-design.md). `/architect`, `/arena`, `/swarm`, `/interrogate`, and prototypes before code locks in a shape.
-5. [Build and clean the change](./05-build-and-clean.md). The build playbooks, `/tdd`, `/unslop`, and `/no-comments`.
-6. [Verify and ship](./06-verify-and-ship.md). Prove behavior on the real app, vet numbers with `/benchmark-checklist`, then open a focused PR and drive it to merged.
+2. [Route work through `/estack:emre-mode`](./02-emre-mode.md). Give it a goal and watch it pick a playbook.
+3. [Understand the code](./03-understand.md). A read-only investigation, then `/estack:how`, `/estack:why`, `/estack:teach`, and `/estack:recall` before you edit anything.
+4. [Design the change](./04-design.md). `/estack:architect`, `/estack:arena`, `/estack:swarm`, `/estack:interrogate`, and prototypes before code locks in a shape.
+5. [Build and clean the change](./05-build-and-clean.md). The build playbooks, `/estack:tdd`, `/estack:unslop`, and `/estack:no-comments`.
+6. [Verify and ship](./06-verify-and-ship.md). Prove behavior on the real app, vet numbers with `/estack:benchmark-checklist`, then open a focused PR and drive it to merged.
 7. [Run work while you sleep](./07-overnight.md). Trust before loops, an overnight contract, a decision log you can audit, and automations that start loops themselves.
 8. [Steer with principle names](./08-principles.md). The 24 names that redirect an agent mid-task.
-9. [Make it yours](./09-make-it-yours.md). Your own mode, `/correct` for repeated mistakes, and how to test a skill change.
+9. [Make it yours](./09-make-it-yours.md). Your own mode, `/estack:correct` for repeated mistakes, and how to test a skill change.
 10. [Recipes and pitfalls](./10-recipes-and-pitfalls.md). Prompts to copy and mistakes to skip.
 
 Read the pages in order the first time. After that, each page stands alone.
@@ -22,9 +22,9 @@ Read the pages in order the first time. After that, each page stands alone.
 Give the agent a goal and a way to check it, in your own words:
 
 ```text
-/emre-mode the export writes duplicate rows when a retry lands mid-run. repro first, then fix and verify.
+/estack:emre-mode the export writes duplicate rows when a retry lands mid-run. repro first, then fix and verify.
 ```
 
-You don't need to name a playbook or list skills. "repro first" and a checkable outcome are all the routing signal `/emre-mode` needs. It matches the Bug fix playbook, copies the steps into a todo list, and calls the right skills as each step fires.
+You don't need to name a playbook or list skills. "repro first" and a checkable outcome are all the routing signal `/estack:emre-mode` needs. It matches the Bug fix playbook, copies the steps into a todo list, and calls the right skills as each step fires.
 
 Next: [Set up estack](./01-setup.md).

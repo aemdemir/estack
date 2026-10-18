@@ -7,64 +7,64 @@ The build playbooks share one discipline. Say what you observed, let the playboo
 A bug prompt states the symptom and asks for a reproduction first:
 
 ```text
-/emre-mode this command emits two records after a retry. repro first, then fix and verify.
+/estack:emre-mode this command emits two records after a retry. repro first, then fix and verify.
 ```
 
 A feature prompt states the behavior and what must not change:
 
 ```text
-/emre-mode add a --json flag. text output stays byte-identical. verify both forms.
+/estack:emre-mode add a --json flag. text output stays byte-identical. verify both forms.
 ```
 
 A refactoring prompt pins behavior before structure moves:
 
 ```text
-/emre-mode move parsing into one module, zero behavior change. record the current output first and prove it's unchanged after.
+/estack:emre-mode move parsing into one module, zero behavior change. record the current output first and prove it's unchanged after.
 ```
 
 A perf prompt states the measurement, not a vibe:
 
 ```text
-/emre-mode startup takes 1.8s on this fixture. trace it, fix the measured cause, show me before and after.
+/estack:emre-mode startup takes 1.8s on this fixture. trace it, fix the measured cause, show me before and after.
 ```
 
 Each of these routes to its playbook ([Bug fix](../../skills/emre-mode/playbooks/bug-fix.md), [Feature](../../skills/emre-mode/playbooks/feature.md), [Refactoring](../../skills/emre-mode/playbooks/refactoring.md), [Perf issue](../../skills/emre-mode/playbooks/perf-issue.md)), and the playbook supplies the steps you didn't type: reproduce before fixing, name the data shape before implementing, pin behavior before restructuring, profile before optimizing.
 
-The Perf issue playbook runs [`/benchmark-checklist`](../../skills/benchmark-checklist/SKILL.md) on its numbers. It vets its baseline and every number after it. [Verify and ship](./06-verify-and-ship.md#vet-a-measured-number-with-benchmark-checklist) shows when to type it yourself.
+The Perf issue playbook runs [`/estack:benchmark-checklist`](../../skills/benchmark-checklist/SKILL.md) on its numbers. It vets its baseline and every number after it. [Verify and ship](./06-verify-and-ship.md#vet-a-measured-number-with-estackbenchmark-checklist) shows when to type it yourself.
 
-## Write the failing test first with `/tdd`
+## Write the failing test first with `/estack:tdd`
 
 When a bug has a cheap local test path, the whole prompt can be two words:
 
 ```text
-/tdd implement
+/estack:tdd implement
 ```
 
-In context, that's enough. [`/tdd`](../../skills/tdd/SKILL.md) writes the smallest test that fails for the intended reason, then the fix, then reruns the test. If a test would need broad harness setup or brittle mocks, the skill says so and uses the closest executable check instead. Don't force a test where a real command is stronger evidence.
+In context, that's enough. [`/estack:tdd`](../../skills/tdd/SKILL.md) writes the smallest test that fails for the intended reason, then the fix, then reruns the test. If a test would need broad harness setup or brittle mocks, the skill says so and uses the closest executable check instead. Don't force a test where a real command is stronger evidence.
 
 ## Clean before you commit
 
-The [Opening a PR playbook](../../skills/emre-mode/playbooks/opening-a-pr.md) runs [`/deslop`](../../skills/deslop/SKILL.md) on the diff before each commit and applies [`/unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies. `/deslop` removes the code slop a branch picks up: unnecessary comments, defensive checks that are abnormal for trusted paths, casts that only dodge the type checker, and nesting an early return would flatten. It keeps behavior unchanged.
+The [Opening a PR playbook](../../skills/emre-mode/playbooks/opening-a-pr.md) runs [`/estack:deslop`](../../skills/deslop/SKILL.md) on the diff before each commit and applies [`/estack:unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies. `/estack:deslop` removes the code slop a branch picks up: unnecessary comments, defensive checks that are abnormal for trusted paths, casts that only dodge the type checker, and nesting an early return would flatten. It keeps behavior unchanged.
 
-For prose, `/unslop` takes a target and any extra rules you have:
+For prose, `/estack:unslop` takes a target and any extra rules you have:
 
 ```text
-/unslop the readme changes, no emdashes
+/estack:unslop the readme changes, no emdashes
 ```
 
 You'll develop your own shorthand. The skill reads intent fine from terse prompts like `unslop that, tighten it`.
 
-## Strip the comments with `/no-comments`
+## Strip the comments with `/estack:no-comments`
 
 Comments need their own pass, and not from the agent that wrote them. An author defends its comments the way you'd defend yours. So before review, hand them to fresh eyes:
 
 ```text
-/no-comments the diff
+/estack:no-comments the diff
 ```
 
-[`/no-comments`](../../skills/no-comments/SKILL.md) spawns [Comment Sicko](../../agents/comment-sicko.md), a read-only reviewer with a short keep list: license headers, doc comments on a public API, links that explain what code can't, behavior forced by an external dependency you can't reshape. Everything else goes. A surprise in your own code gets no such pass. The comment comes back as a refactor flag, and `/no-comments` fixes the flags it accepts at the root cause. When a comment claims a constraint, "do not remove", the skill offers to encode the claim as a type, test, or lint. Either way, the comment comes out.
+[`/estack:no-comments`](../../skills/no-comments/SKILL.md) spawns [Comment Sicko](../../agents/comment-sicko.md), a read-only reviewer with a short keep list: license headers, doc comments on a public API, links that explain what code can't, behavior forced by an external dependency you can't reshape. Everything else goes. A surprise in your own code gets no such pass. The comment comes back as a refactor flag, and `/estack:no-comments` fixes the flags it accepts at the root cause. When a comment claims a constraint, "do not remove", the skill offers to encode the claim as a type, test, or lint. Either way, the comment comes out.
 
-The division of labor is worth keeping straight. `/deslop` cleans slop out of the code, `/unslop` cleans it out of prose, and `/no-comments` hands the comments to a reviewer who didn't write them.
+The division of labor is worth keeping straight. `/estack:deslop` cleans slop out of the code, `/estack:unslop` cleans it out of prose, and `/estack:no-comments` hands the comments to a reviewer who didn't write them.
 
 **Pitfall:** cleanup is not optional polish. A diff with narrating comments and defensive dead weight reads as unfinished to reviewers, and the extra code is where the next bug hides. If the diff feels padded, say `deslop it` before you commit, not after review calls it out.
 

@@ -1,0 +1,14 @@
+{
+  "name": "estack",
+  "owner": {
+    "name": "Emre Demir"
+  },
+  "description": "estack, a fork of pstack for Claude Code and GitLab: rigorous agent workflows you can parallelize with confidence.",
+  "plugins": [
+    {
+      "name": "estack",
+      "source": "./",
+      "description": "if you want to go fast, go deep first. estack is a fork of pstack that helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence."
+    }
+  ]
+}

@@ -2,8 +2,6 @@
 
 This is the payoff for everything before it. An agent you can trust to verify its own work is an agent you can leave alone with a hard task. What makes that safe isn't hope. It's a checkable finish condition, an isolated worktree, and a decision log you audit in the morning.
 
-![She waves goodnight from the door while robots keep the factory running, one updating a DECISION LOG wall board under a BUILD LOOP ACTIVE sign.](./images/overnight.jpg)
-
 ## Earn the trust before the loop
 
 A loop you don't trust just produces unchecked work faster, and the mess compounds with every iteration. Before you leave one running, check that it has earned it:
@@ -20,7 +18,7 @@ Make the loop autonomous only after all four hold. Until then, run it while you 
 A good handoff has the goal, the finish condition, permissions, and an escape hatch. It doesn't need to be long:
 
 ```text
-/emre-mode im going to bed. migrate every caller to the new parser in a fresh worktree off <base>.
+/estack:emre-mode im going to bed. migrate every caller to the new parser in a fresh worktree off <base>.
 done means zero old callers, all parser fixtures pass, old api deleted.
 keep a decision log. don't ask me before committing.
 /loop until done. if you're truly stuck after a few hours, stop and write up why.
@@ -35,7 +33,7 @@ Walk through what each line buys you:
 - `/loop` is Claude Code's built-in wake mechanism, not an estack skill. The [Autonomous run playbook](../../skills/emre-mode/playbooks/autonomous-run.md) uses it to re-check the finish condition on events or a heartbeat.
 - The escape hatch lets it stop at a genuine dead end and write up why, which beats eight hours of creative goal reinterpretation.
 
-Because you'll review this work after stepping away, `/emre-mode` routes it through [`/figure-it-out`](../../skills/figure-it-out/SKILL.md), which designs the run's phases before any code and wires in the decision log.
+Because you'll review this work after stepping away, `/estack:emre-mode` routes it through [`/estack:figure-it-out`](../../skills/figure-it-out/SKILL.md), which designs the run's phases before any code and wires in the decision log.
 
 ## What the loop does all night
 
@@ -55,12 +53,12 @@ One change, one check, one log row, every iteration. Changes that didn't help ge
 
 ## The morning audit
 
-[`/show-me-your-work`](../../skills/show-me-your-work/SKILL.md) is what makes the run reviewable. Each row records the time, phase, decision, reason, an evidence pointer, and the result, in a TSV at `decisions.tsv` (or `.audit/<task-slug>.tsv` when several runs share a directory). It stays local by default. Commit it when the work is ambitious enough that a reviewer needs the trail to trust the result.
+[`/estack:show-me-your-work`](../../skills/show-me-your-work/SKILL.md) is what makes the run reviewable. Each row records the time, phase, decision, reason, an evidence pointer, and the result, in a TSV at `decisions.tsv` (or `.audit/<task-slug>.tsv` when several runs share a directory). It stays local by default. Commit it when the work is ambitious enough that a reviewer needs the trail to trust the result.
 
 When you're back, ask for the run in review form:
 
 ```text
-/show-me-your-work catch me up on what you did last night
+/estack:show-me-your-work catch me up on what you did last night
 ```
 
 Before the skill hands back its summary, it spawns a reviewer on a different model to read the trail and the transcript, and the reply ends with an Attention section listing what deserves your scrutiny. Read that section first, then the log rows it points at. You're auditing decisions, not re-reading the whole night.
