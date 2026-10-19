@@ -12,7 +12,7 @@ Defer to Comment Sicko's fresh perspective.
 
 ## Scope
 
-Use the caller's files or diff. Otherwise use the current diff against the base branch, default `main`, including the working tree.
+Use the caller's files or diff. Otherwise use the current diff against the base branch, default trunk, including the working tree.
 
 ## Steps
 
